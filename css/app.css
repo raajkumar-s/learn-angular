@@ -1,0 +1,15 @@
+body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+body > div {
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+body > div >div {
+    border: 1px solid grey;
+}

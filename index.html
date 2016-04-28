@@ -1,15 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="gemStore">
 
 <head>
     <meta charset="UTF-8">
     <title>Angular JS Practice</title>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
-    <script src="lib/angular.min.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
 </head>
 
-<body>
+<body class="list-group" ng-controller="StoreController as store">
+    <header>
+        <h1 class="text-center">Flatlander Crafted Gems</h1>
+        <h2 class="text-center">– an Angular store –</h2>
+    </header>
+    <div class="list-group-item" ng-repeat="product in store.products">
+        <h3>
+                {{product.name}}
+                <em class="pull-right">{{product.price | currency}}</em>
+            </h3>
+        <section ng-show="product.images.length">
+            <img ng-src="{{product.images[0]}}" />
+            <ul class="list-inline thumbs">
+                <li class="thumbnail" ng-repeat="image in product.images">
+                    <img ng-src="{{image}}" />
+                </li>
+            </ul>
+        </section>
 
+        <section class="tab" ng-controller="TabController as tab">
+            <ul class="nav nav-pills">
+                <li ng-class="active:isSet(1)">
+                    <a ng-click="tab.setTab(1)" href>Description</a></li>
+                <li ng-class="active:isSet(2)">
+                    <a ng-click="tab.setTab(2)" href>Specs</a></li>
+                <li ng-class="active:isSet(3)">
+                    <a ng-click="tab.setTab(3)" href>Reviews</a></li>
+            </ul>
+            <div ng-show="tab.isSet(1)">
+                <h4>Description</h4>
+                <blockquote></blockquote>
+            </div>
+            <div ng-show="tab.isSet(2)">
+                <h4>Specs</h4>
+                <blockquote>Shine: </blockquote>
+            </div>
+            <div ng-show="tab.isSet(3)">
+                <h4>Reviews</h4>
+                <blockquote></blockquote>
+            </div>
+        </section>
+    </div>
 </body>
 
 </html>
