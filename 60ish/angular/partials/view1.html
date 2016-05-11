@@ -1,0 +1,14 @@
+<div data-ng-controller="SimpleController as control" class="container">
+    <label for="inputbox">Input here: </label>
+    <input id="inputbox" type="text" data-ng-model="filter.name" />
+    <ul>
+        <li data-ng-repeat="fruit in control.fruits | filter: filter.name | orderBy:'name'">
+            {{fruit.name | uppercase}} will be availble on {{fruit.season}} seasons.
+        </li>
+    </ul>
+    <label for="fruitname">Fruit Name: </label>
+    <input id="fruitname" type="text" data-ng-model="newfruit.name" />
+    <label for="fruitseason">Season: </label>
+    <input id="fruitseason" type="text" data-ng-model="newfruit.season" />
+    <button data-ng-click="addFruit()">Add Fruit</button>
+</div>
